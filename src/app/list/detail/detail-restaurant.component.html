@@ -1,0 +1,17 @@
+<div class="container">
+  <div>
+    <h1>{{ restaurant.name }}</h1>
+    <h5>{{ restaurant.description }}</h5>
+    <div class="tagexitbar">
+      <a *ngFor="let eatTags of restaurant.tags" class="badge badge-pill badge-light"><h5>{{ eatTags }}</h5></a>
+    </div>
+    <div>
+      <iframe height="500"
+        [src]='sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyARMymuT9ZG1KHPw2p_CRM5FQ8_j9Kd3SA&q=" + restaurant.name.split(" ").join("+") + "," +restaurant.city)' allowfullscreen>
+      </iframe>
+    </div>
+    <div class="tagexitbar">
+      <button class="btn btn-outline-success" (click)="close()">Exit</button>
+    </div>
+  </div>
+</div>

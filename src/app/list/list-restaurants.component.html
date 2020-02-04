@@ -1,0 +1,29 @@
+<div *mobxAutorun>
+  <div class="container mt-3">
+    <div class="row justify-content-center">
+      <div class="btn-group">
+        <button type="button" class="btn btn-success" (click)="sortAlphabetically()">Sort restaurants</button>
+        <button type="button" class="btn btn-primary">What would you like to eat ?</button>
+        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu customClassForDropDown">
+          <a class="dropdown-item" *ngFor="let tag of tagsList" (click)="filterbyTag(tag)">{{ tag }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div *ngFor="let restaurant of dataRestaurants.restaurants" class="p-0 m-4 col-md-5 col-lg-3 col-sm-6 col-9 card" appCardOnHover (click)="openDialog(restaurant)">
+        <img src="{{ restaurant.image }}" class="card-img-top img-fluid" alt="{{ restaurant.description }}">
+        <div class="card-body">
+          <h4 class="card-title">{{ restaurant.name }}</h4>
+          <div class="row tagexitbar">
+            <a *ngFor="let eatTags of restaurant.tags" href="#" class="badge badge-pill badge-light">{{ eatTags }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
